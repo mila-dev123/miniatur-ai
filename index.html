@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="id">
+<head>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQZZFVG921"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-TQZZFVG921');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniatur AI — Ubah Foto Jadi AI Figure (Bandai/Tamiya)</title>
+    <meta name="description" content="Ubah foto jadi miniatur AI/AI figure dengan Gemini 2.5 Flash (Nano Banana). Cocok untuk keluarga, motor & mobil; gaya Bandai/Tamiya; prompt premium siap pakai.">
+    <link rel="canonical" href="https://miniaturai.id/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Miniatur AI — Ubah Foto Jadi AI Figure">
+    <meta property="og:description" content="Buat miniatur AI/AI figure dari foto dengan Gemini 2.5 Flash (Nano Banana). Gaya Bandai/Tamiya, diorama & packaging; prompt premium siap pakai.">
+    <meta property="og:url" content="https://miniaturai.id/">
+    <meta property="og:image" content="https://miniaturai.id/og-cover.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Miniatur AI — Ubah Foto Jadi AI Figure">
+    <meta name="twitter:description" content="Transformasikan foto jadi miniatur AI/AI figure. Bandai/Tamiya style, diorama & packaging, dengan Gemini 2.5 Flash (Nano Banana).">
+    <meta name="twitter:image" content="https://miniaturai.id/og-cover.jpg">
+    <meta name="keywords" content="miniatur AI, AI figure, AI doll, Gemini 2.5 Flash, Nano Banana, Bandai, Tamiya, prompt miniatur AI, diorama, packaging mockup">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    
+    <!-- Import Inter font similar to screenshot -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --text-primary: #EAEAEA;
+            --text-secondary: #A1A1A1;
+            --background-primary: #0B0B0B;
+            --background-secondary: #111111;
+            --card-background: #1A1A1A;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --highlight: rgba(255, 255, 255, 0.04);
+            --button-hover: #FFFFFF;
+            --primary-yellow: #9BC47A;
+            --primary-yellow-light: #B5D4A5;
+            --primary-yellow-dark: #8AB872;
+
+            --space-xs: 3px;
+            --space-sm: 6px;
+            --space-md: 10px;
+            --space-lg: 16px;
+            --space-xl: 24px;
+            --space-xxl: 36px;
+
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 10px;
+
+            --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.45);
+            --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.25s ease;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Remove all possible blue lines */
+        *::before, *::after {
+            border-left: none !important;
+            border-right: none !important;
+            background: none !important;
+        }
+        
+        .cta::before, .cta::after {
+            display: none !important;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-size: 15px;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+        
+        /* More compact Header Styles */
+        header {
+            padding: 8px 0;
+            position: sticky;
+            top: 0;
+            background-color: var(--background-primary);
+            z-index: 100;
+            border-bottom: 1px solid var(--card-border);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        .logo .icon {
+            color: #FFFFFF;
+            font-size: 20px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 38px;
+            min-width: 100px;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.01em;
+        }
+        
+        .btn:focus-visible {
+            outline: 3px solid rgba(155, 196, 122, 0.4);
+            outline-offset: 2px;
+        }
+        
+        .btn-primary {
+            background-color: #FFFFFF;
+            color: #111111;
+            border: 1px solid #FFFFFF;
+        }
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #FFFFFF;
+            border-color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.08);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid #FFFFFF;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.06);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.45);
+        }
+        .hero {
+            padding: 60px 0 50px;
+            background-color: transparent;
+            position: relative;
+            overflow: hidden;
+            color: var(--text-primary);
+            text-align: center;
+        }
+        
+        .hero-tag {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .hero-tag i {
+            margin-right: 6px;
+            color: var(--primary-yellow-dark);
+        }
+        
+        .hero-title {
+            font-size: 3.2rem;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-title .highlight {
+            color: var(--primary-yellow-dark);
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 32px auto;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-feature-bar {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        
+        .hero-feature-item i {
+            color: var(--primary-yellow-dark);
+        }
+        
+        .endorsement {
+            margin-top: 32px;
+            padding: 24px;
+            background-color: #1F2F1F;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: 1px solid #2F3F2F;
+            box-shadow: var(--shadow-md);
+            font-size: 0.9rem;
+            color: #C5DCC5;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* More compact Play Section */
+        .play-section {
+            padding: 40px 0;
+            background-color: var(--background-primary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        
+        .section-header p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .play-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .play-card {
+            background-color: var(--card-background);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--card-border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .play-title {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #FFFFFF;
+        }
+        
+        .play-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        
+        .play-video {
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 9/16;
+            background-color: #0F0F0F;
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto 12px auto;
+        }
+        
+        .play-video video, .play-video iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .play-video::before, .play-video::after {
+            display: none !important;
+        }
+        
+        .video-placeholder {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #2A2A2A, #3A3A3A);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-radius: var(--radius-md);
+            height: 100%;
+        }
+        .copy-btn:focus-visible {
+            outline: 3px solid rgba(155, 196, 122, 0.4);
+            outline-offset: 2px;
+        }
+        
+        .video-btn {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            min-height: 34px;
+        }
+        
+        /* More compact Use Cases Section */
+        .use-cases {
+            padding: 40px 0;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .case-card {
+            background-color: var(--card-background);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .case-title {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--card-border);
+            color: var(--primary-yellow-dark);
+            font-size: 1.05rem;
+        }
+        
+        .case-images {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            padding: 8px;
+        }
+        
+        .case-image {
+            flex: 1;
+            aspect-ratio: 4/3;
+            position: relative;
+            background-color: #0F0F0F;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+        
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+        
+        .case-info {
+            padding: 10px 12px;
+            background-color: var(--card-background);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .image-placeholder {
+            background: linear-gradient(45deg, #f0f0f0, #fafafa);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        
+        /* Prompt Section Styles */
+        .prompt-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .prompt-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .prompt-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .prompt-box {
+            width: 100%;
+            height: 200px;
+            padding: 16px;
+            background-color: var(--card-background);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-family: 'Inter', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            resize: none;
+            outline: none;
+            cursor: text;
+            transition: border-color var(--transition-normal);
+        }
+        
+        .prompt-box:focus {
+            border-color: var(--primary-yellow-dark);
+        }
+        
+        .prompt-box::selection {
+            background-color: var(--primary-yellow-dark);
+            color: #000;
+        }
+        
+        .copy-prompt-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--primary-yellow-dark);
+            color: #000;
+            border: none;
+            border-radius: var(--radius-md);
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .copy-prompt-btn:hover {
+            background-color: var(--primary-yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(138, 184, 114, 0.25);
+        }
+        
+        .copy-prompt-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* More compact FAQ Section */
+        .faq {
+            padding: 40px 0;
+            background-color: var(--background-secondary);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--card-background);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary-yellow-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .faq-question {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 20px;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            transition: color var(--transition-normal);
+        }
+        
+        .faq-item:hover .faq-question {
+            color: var(--primary-yellow-dark);
+        }
+        
+        .faq-arrow {
+            font-size: 0.9rem;
+            transition: transform var(--transition-normal);
+            color: var(--text-secondary);
+        }
+        
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+            color: var(--primary-yellow-dark);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+        
+        .faq-answer-content {
+            padding: 0 20px 20px 20px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .faq-answer-content p {
+            margin-bottom: 12px;
+        }
+        
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-answer-content ul {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+        
+        .faq-answer-content li {
+            margin-bottom: 6px;
+        }
+        
+        .faq-answer-content em {
+            color: var(--primary-yellow-light);
+            font-style: italic;
+        }
+        
+        /* More compact CTA Section */
+        .cta {
+            padding: 35px 0;
+            background: #1F2F1F;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin: 40px auto;
+            max-width: 1140px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #2F3F2F;
+        }
+        
+        .cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #C5DCC5;
+        }
+        
+        .cta h2::after {
+            display: none;
+        }
+        
+        .cta p {
+            font-size: 0.95rem;
+            color: #C5DCC5;
+            margin-bottom: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta .btn {
+            margin: 0 6px;
+        }
+        
+        .btn-dark {
+            background-color: #C5DCC5;
+            color: #1F2F1F;
+            border: 2px solid #C5DCC5;
+        }
+        
+        .btn-dark:hover {
+            background-color: transparent;
+            color: #C5DCC5;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* More compact Footer */
+        footer {
+            background-color: var(--background-secondary);
+            padding: 12px 0;
+            border-top: 1px solid var(--card-border);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            font-size: 0.85rem;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-yellow-dark);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        
+        .highlight {
+            color: var(--primary-yellow-dark);
+            font-weight: 600;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .play-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-feature-bar {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                margin-bottom: 6px;
+            }
+            
+            .play-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-images {
+                flex-direction: row;
+                gap: 4px;
+                padding: 4px;
+            }
+            
+            .case-image {
+                aspect-ratio: 3/2;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTKD9CP5"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <img src="favicon/favicon-32x32.png" alt="Miniatur AI" class="icon" style="width: 20px; height: 20px;">
+                    Miniatur AI
+                </a>
+                <a href="https://banananano.ai/#ai-editor" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer" aria-label="Coba Sekarang Nano Banana AI Editor">Coba Sekarang</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-tag">
+                    <i class="fas fa-star"></i> Tren baru di TikTok Indonesia
+                </div>
+                <h1 class="hero-title">
+                    Mengubah Foto Anda Menjadi <span class="highlight">Miniatur AI</span> 
+                  </h1>
+                <p class="hero-description">
+                    Buat Miniatur AI dari foto kendaraan, keluarga, atau diri sendiri dengan <span class="highlight">Gemini 2.5 Flash Image (Nano Banana)</span>. Hasil realistis dan siap pajang ala figur Bandai &amp; Tamiya.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://banananano.ai/#ai-editor" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Mulai Buat Miniatur</a>
+                    <a href="#play" class="btn btn-secondary">Lihat Contoh</a>
+                </div>
+                
+                <div class="hero-feature-bar">
+                    <div class="hero-feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Gaya Bandai & Tamiya</span>
+                    </div>
+                    <div class="hero-feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Prompt premium ready-to-use</span>
+                    </div>
+                    <div class="hero-feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Hasil ultra-realistis</span>
+                    </div>
+                </div>
+                
+                <div class="endorsement">
+                    <p class="mb-0">Tren miniatur AI sedang viral di TikTok Indonesia dengan jutaan view! Teknologi Google Gemini dan Nano Banana AI memungkinkan kreasi miniatur digital dengan kualitas tinggi seperti produk asli.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="use-cases">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Contoh <span class="highlight">Miniatur AI</span> Terbaik</h2>
+                    <p>Lihat bagaimana foto biasa diubah menjadi miniatur action figure yang menakjubkan</p>
+                </div>
+                
+                <div class="prompt-section fade-in">
+                    <h3>Prompt Premium untuk Hasil Terbaik</h3>
+                    <div class="prompt-container">
+                        <textarea class="prompt-box" readonly onclick="this.select()" placeholder="Klik untuk memilih semua prompt...">nano banana: Buat [figurine karakter skala 1/7] [gaya hiper-realistis] sebagai boneka AI. Sertakan [desain produk komersial yang sudah selesai], [ditempatkan di meja iMac dengan keyboard Apple putih], [berdiri di atas alas akrilik transparan bundar yang bersih tanpa label atau teks]. Tambahkan [pencahayaan studio profesional yang menyoroti detail ukiran], dengan latar belakang menampilkan [proses pemodelan ZBrush dari figurine yang sama di layar iMac, memperlihatkan kontras antara “sedang dikerjakan” vs produk jadi]. Di samping figurine, letakkan [kotak kemasan dengan sudut membulat dan jendela depan transparan, terbuka di bagian atas, memperlihatkan plastik clamshell transparan di dalamnya, sedikit lebih tinggi dari figurine dan berukuran realistis untuk menampungnya].
+</textarea>
+                        <button class="copy-prompt-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i> Copy Prompt
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="case-grid">
+                    <div class="case-card fade-in delay-1">
+                        <h3 class="case-title">Motor Custom</h3>
+                        <div class="case-images">
+                            <div class="case-image">
+                                <img src="image/moto.png" alt="Foto Motor Asli">
+                            </div>
+                            <div class="case-image">
+                                <img src="image/moto2.png" alt="Hasil Miniatur Motor">
+                            </div>
+                        </div>
+                        <div class="case-info">
+                            <p class="mb-0">Motor kesayangan menjadi <strong>model kit Tamiya</strong> yang super detail</p>
+                        </div>
+                    </div>
+                    
+                    <div class="case-card fade-in delay-2">
+                        <h3 class="case-title">Foto Keluarga</h3>
+                        <div class="case-images">
+                            <div class="case-image">
+                                <img src="image/family.png" alt="Foto Keluarga Asli">
+                            </div>
+                            <div class="case-image">
+                                <img src="image/family2.png" alt="Hasil Miniatur Keluarga">
+                            </div>
+                        </div>
+                        <div class="case-info">
+                            <p class="mb-0">Keluarga dalam bentuk <strong>miniatur figur koleksi</strong> gaya Bandai</p>
+                        </div>
+                    </div>
+                    
+                    <div class="case-card fade-in delay-3">
+                        <h3 class="case-title">Kostum Superhero</h3>
+                        <div class="case-images">
+                            <div class="case-image">
+                                <img src="image/3.png" alt="Foto Kostum Superhero Asli">
+                            </div>
+                            <div class="case-image">
+                                <img src="image/33.jpg" alt="Hasil Miniatur Superhero">
+                            </div>
+                        </div>
+                        <div class="case-info">
+                            <p class="mb-0">Transformasi menjadi <strong>miniatur kostum superhero AI</strong> yang keren</p>
+                        </div>
+                    </div>
+                    
+                    <div class="case-card fade-in delay-4">
+                        <h3 class="case-title">Mobil Diorama</h3>
+                        <div class="case-images">
+                            <div class="case-image">
+                                <img src="image/carr.jpg" alt="Foto Mobil Asli">
+                            </div>
+                            <div class="case-image">
+                                <img src="image/car2.png" alt="Hasil Miniatur Mobil">
+                            </div>
+                        </div>
+                        <div class="case-info">
+                            <p class="mb-0">Mobil kesayangan dalam setting <strong>miniatur diorama AI</strong> premium</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="play-section" id="play">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Cara Membuat <span class="highlight">Miniatur AI</span> Premium</h2>
+                    <p>Pilih jenis miniatur AI yang Anda inginkan dan gunakan prompt yang sesuai untuk hasil terbaik.</p>
+                </div>
+
+                <div class="play-grid">
+                    <div class="play-card fade-in delay-1">
+                        <h3 class="play-title">Motor & Mobil Miniatur</h3>
+                        <p class="play-desc">Ubah kendaraan kesayangan Anda menjadi miniatur model kit dengan detail presisi tinggi.</p>
+                        <div class="play-video">
+                            <video src="video/moto2.mp4" controls preload="metadata" playsinline onerror="this.style.display='none'; this.parentElement.querySelector('.video-placeholder').style.display='flex';"></video>
+                            <div class="video-placeholder">Video tidak tersedia</div>
+                        </div>
+                    </div>
+
+                    <div class="play-card fade-in delay-2">
+                        <h3 class="play-title">Keluarga & Anak Miniatur</h3>
+                        <p class="play-desc">Transformasikan foto keluarga menjadi koleksi miniatur figur digital yang menggemaskan.</p>
+                        <div class="play-video">
+                            <video src="video/family.mp4" controls preload="metadata" playsinline onerror="this.style.display='none'; this.parentElement.querySelector('.video-placeholder').style.display='flex';"></video>
+                            <div class="video-placeholder">Video tidak tersedia</div>
+                        </div>
+                    </div>
+
+                    <div class="play-card fade-in delay-3">
+                        <h3 class="play-title">Kostum Superhero Miniatur</h3>
+                        <p class="play-desc">Jadikan diri Anda action figure superhero lengkap dengan kostum dan pose heroik.</p>
+                        <div class="play-video">
+                            <video src="video/tutorial.mp4" controls preload="metadata" playsinline onerror="this.style.display='none'; this.parentElement.querySelector('.video-placeholder').style.display='flex';"></video>
+                            <div class="video-placeholder">Video tidak tersedia</div>
+                        </div>
+                    </div>
+
+                    <div class="play-card fade-in delay-4">
+                        <h3 class="play-title">Diorama & Box Miniatur</h3>
+                        <p class="play-desc">Ciptakan miniatur diorama lengkap dengan packaging profesional.</p>
+                        <div class="play-video">
+                            <video src="video/4.mp4" controls preload="metadata" playsinline onerror="this.style.display='none'; this.parentElement.querySelector('.video-placeholder').style.display='flex';"></video>
+                            <div class="video-placeholder">Video tidak tersedia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="cta fade-in">
+                <h2>Buat <span class="highlight">Miniatur AI</span> Anda Sekarang!</h2>
+                <p>Jadikan foto biasa menjadi karya seni <strong>miniatur action figure AI</strong> yang menakjubkan dengan <strong>Nano Banana AI</strong>.</p>
+                <a href="https://banananano.ai/#ai-editor" class="btn btn-dark" target="_blank" rel="noopener noreferrer">Coba Nano Banana AI Editor</a>
+            </section>
+        </div>
+
+        <section class="faq">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>FAQ Miniatur AI</h2>
+                    <p>Temukan jawaban untuk pertanyaan umum tentang Miniatur AI</p>
+                </div>
+                
+                <div class="faq-grid">
+                    <div class="faq-item fade-in delay-1">
+                        <div class="faq-question">
+                            <span>Apa itu "prompt" untuk Miniatur AI, dan seperti apa contohnya?</span>
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Prompt untuk Miniatur AI adalah perintah singkat berupa deskripsi bahasa alami—misalnya:</p>
+                                <p><em>"Miniatur figura karakter skala 1/7, gaya hiper-realistis seperti Bandai, diletakkan di atas alas akrilik transparan di atas meja, dengan pencahayaan lembut studio."</em></p>
+                                <p>Ini mengarahkan model seperti Gemini 2.5 Flash Image (Nano Banana) untuk menciptakan representasi AI figure yang sangat detail dan realistis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in delay-2">
+                        <div class="faq-question">
+                            <span>Alat apa yang digunakan untuk membuat Miniatur AI?</span>
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Alat utama adalah Google Gemini 2.5 Flash Image—dikenal juga sebagai Nano Banana.</p>
+                                <p>Model ini tersedia melalui aplikasi Gemini, Google AI Studio, atau API-nya, dan unggul dalam menjaga konsistensi karakter, mengedit gambar secara bertahap, serta menggabungkan beberapa gambar dalam satu prompt.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in delay-3">
+                        <div class="faq-question">
+                            <span>Apakah Miniatur AI bisa digunakan secara gratis?</span>
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Ya, Nano Banana bisa dicoba secara gratis melalui aplikasi Gemini atau AI Studio tanpa biaya langsung.</p>
+                                <p>Namun, dalam konteks API berbayar (seperti di Gemini API / AI Studio), penggunaan dikalkulasikan per token—sekitar $0.039 per gambar berdasarkan 1.290 token per output.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in delay-4">
+                        <div class="faq-question">
+                            <span>Untuk keperluan atau skenario apa saja Miniatur AI cocok?</span>
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Miniatur AI sempurna untuk berbagai skenario seperti:</p>
+                                <ul>
+                                    <li>Kreasi miniatur motor/mobil ala Bandai/Tamiya</li>
+                                    <li>Figur keluarga atau anak sebagai miniatur digital</li>
+                                    <li>Superhero atau kostum cosplay dalam format figur</li>
+                                    <li>Diorama atau packaging mockup produk</li>
+                                </ul>
+                                <p>Model juga mendukung transfer gaya (style transfer), penggabungan multi-gambar, dan pengeditan lokal spesifik seperti mengubah latar atau menambahkan objek.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Tentang</a>
+                    <a href="#" class="footer-link">Kontak</a>
+                    <a href="#" class="footer-link">Privasi</a>
+                </div>
+                <div class="copyright">
+                    © 2025 Miniatur AI. Dibuat dengan ❤️ untuk komunitas Indonesia.
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 页面加载完成后添加事件
+        document.addEventListener('DOMContentLoaded', function() {
+            const promptBox = document.querySelector('.prompt-box');
+            const copyBtn = document.getElementById('copyBtn');
+            
+            // 复制功能
+            function copyPrompt() {
+                // 选择所有文本
+                promptBox.focus();
+                promptBox.select();
+                
+                // 使用现代剪贴板API
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(promptBox.value).then(() => {
+                        showCopySuccess();
+                    }).catch(() => {
+                        fallbackCopy();
+                    });
+                } else {
+                    fallbackCopy();
+                }
+                
+                function fallbackCopy() {
+                    try {
+                        const successful = document.execCommand('copy');
+                        if (successful) {
+                            showCopySuccess();
+                        } else {
+                            alert('请手动选择文本复制 (Ctrl+C)');
+                        }
+                    } catch (err) {
+                        alert('请手动选择文本复制 (Ctrl+C)');
+                    }
+                }
+                
+                function showCopySuccess() {
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    copyBtn.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }
+            
+            // 添加事件监听器
+            if (copyBtn) {
+                copyBtn.addEventListener('click', copyPrompt);
+            }
+            
+            if (promptBox) {
+                promptBox.addEventListener('click', function() {
+                    this.select();
+                });
+            }
+            
+            // FAQ 展开/收起功能
+            const faqItems = document.querySelectorAll('.faq-item');
+            console.log('找到FAQ项目数量:', faqItems.length);
+            
+            faqItems.forEach((item, index) => {
+                console.log('为FAQ项目', index, '添加事件监听器');
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('点击了FAQ项目', index);
+                    
+                    // Check which FAQ item was clicked
+                    if (index === 0) {
+                        // Click first question, expand both first and second
+                        const isFirstActive = faqItems[0].classList.contains('active');
+                        const isSecondActive = faqItems[1].classList.contains('active');
+                        
+                        // Close all FAQ items
+                        faqItems.forEach((otherItem, otherIndex) => {
+                            otherItem.classList.remove('active');
+                        });
+                        
+                        // If first or second are not expanded, expand both first and second
+                        if (!isFirstActive || !isSecondActive) {
+                            faqItems[0].classList.add('active');
+                            faqItems[1].classList.add('active');
+                            console.log('Expanded FAQ items 0 and 1');
+                        }
+                    } else if (index === 2) {
+                        // Click third question, expand both third and fourth
+                        const isThirdActive = faqItems[2].classList.contains('active');
+                        const isFourthActive = faqItems[3].classList.contains('active');
+                        
+                        // Close all FAQ items
+                        faqItems.forEach((otherItem, otherIndex) => {
+                            otherItem.classList.remove('active');
+                        });
+                        
+                        // If third or fourth are not expanded, expand both third and fourth
+                        if (!isThirdActive || !isFourthActive) {
+                            faqItems[2].classList.add('active');
+                            faqItems[3].classList.add('active');
+                            console.log('Expanded FAQ items 2 and 3');
+                        }
+                    } else {
+                        // Click second or fourth question, handle with original logic
+                        const isActive = this.classList.contains('active');
+                        console.log('Current state:', isActive ? 'expanded' : 'collapsed');
+                        
+                        // Close all other FAQ items
+                        faqItems.forEach((otherItem, otherIndex) => {
+                            if (otherItem !== this) {
+                                otherItem.classList.remove('active');
+                                console.log('Closed FAQ item', otherIndex);
+                            }
+                        });
+                        
+                        // Toggle current FAQ item
+                        if (isActive) {
+                            this.classList.remove('active');
+                            console.log('Collapsed FAQ item', index);
+                        } else {
+                            this.classList.add('active');
+                            console.log('Expanded FAQ item', index);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
